@@ -1,7 +1,7 @@
 window.addEventListener("load", start);
 
 const actorTemplate = document.querySelector("template").content;
-const actorList = document.querySelector("ul.actors");
+const actorList = document.querySelector(".actors");
 const modal = document.querySelector(".modal_wrapper");
 
 const options = {
