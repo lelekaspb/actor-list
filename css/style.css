@@ -146,7 +146,6 @@ media queries */
 .movie-button {
   font-family: var(--font);
   padding: 0.6rem;
-  /* margin: 4rem 0 0 4rem; */
   font-size: 1.5rem;
   text-align: left;
   background-color: #fff;
@@ -156,6 +155,7 @@ media queries */
   width: 100%;
   cursor: pointer;
   outline: none;
+  transition: all 0.3s;
 }
 
 .movie-button span:nth-of-type(2) {
@@ -163,17 +163,16 @@ media queries */
   float: right;
   padding: 3px;
   color: var(--primary-color);
+  transition: all 0.3s;
 }
 
 .movie-button:hover,
 .movie-button span:nth-of-type(2):hover {
   color: var(--secondary-color);
-  /* border-color: var(--secondary-color); */
 }
 
 .movie-button:hover span:nth-of-type(2) {
   color: var(--secondary-color);
-  /* border-color: var(--secondary-color); */
 }
 
 .movie-dropdown {
@@ -181,7 +180,6 @@ media queries */
   background-color: #fff;
   display: flex;
   flex-direction: column;
-
   width: 12.8rem;
   gap: 1rem;
   border: 1.5px solid var(--primary-color);
@@ -194,6 +192,7 @@ media queries */
 .movie-dropdown a {
   color: var(--primary-color);
   text-decoration: none;
+  transition: all 0.2s;
 }
 
 .movie-dropdown a:hover {
