@@ -12,6 +12,18 @@
       <h1>Actors</h1>
     </header>
     <main>
+      <section class="filter">
+        <button id="movie-button" class="movie-button">
+          <span>All movies</span><span>&#9660;</span>
+        </button>
+        <div id="movie-dropdown" class="movie-dropdown hidden">
+          <a href="#" data-movie="all">All movies</a>
+          <a href="#" data-movie="pulp_fiction">Pulp Fiction</a>
+          <a href="#" data-movie="fight_club">Fight Club</a>
+          <a href="#" data-movie="goodfellas">Goodfellas</a>
+          <a href="#" data-movie="inception">Inception</a>
+        </div>
+      </section>
       <div class="content_wrapper">
         <section class="actors">
           <!-- <li class="actor">
