@@ -8,6 +8,10 @@ const dropdown = document.querySelector("#movie-dropdown");
 const dropdownList = document.querySelectorAll("#movie-dropdown > a");
 let dataArray = [];
 let filtered = [];
+const filterObj = {
+  movie: "all",
+  sort: "first_name",
+};
 
 const options = {
   method: "GET",
@@ -41,7 +45,6 @@ function renderActors(actors) {
 }
 
 function showDetails() {
-  // console.log(this);
   modal.querySelector(".movie_name > span").textContent = this.dataset.movie;
   modal.querySelector(".actor_name > span").textContent = this.dataset.actor;
   modal.style.display = "block";
@@ -49,7 +52,6 @@ function showDetails() {
 }
 
 function closeDetails(e) {
-  // console.log(e.target);
   if (
     e.target.classList.contains("modal_wrapper") ||
     e.target.classList.contains("modal_close")
@@ -60,7 +62,7 @@ function closeDetails(e) {
   }
 }
 
-// filter
+// filter by movie dropdown
 filterBtn.addEventListener("click", function (e) {
   e.stopPropagation();
   dropdown.classList.toggle("hidden");
@@ -70,23 +72,46 @@ window.addEventListener("click", function () {
   dropdown.classList.add("hidden");
 });
 
+//add eventListeners fro filtering and sorting
 dropdownList.forEach((link) => {
-  link.addEventListener("click", filterActors);
+  link.addEventListener("click", changeMovie);
 });
+document.querySelector("#sort").addEventListener("change", changeSortBy);
 
-function filterActors(e) {
+// change filterObj based on input
+function changeMovie(e) {
+  filterObj.movie = this.innerText;
+  document.querySelector("#movie-button span:nth-of-type(1)").textContent =
+    e.target.innerText;
+  filterActors();
+}
+
+function changeSortBy() {
+  filterObj.sort = document.querySelector("#sort").value;
+  filterActors();
+}
+
+// filtering function that calls rendering function after itself
+function filterActors() {
   fetch("./json/actors.json", options)
     .then((res) => res.json())
     .then(function (data) {
-      if (e.target.innerText !== "All movies") {
-        filtered = data.filter(
-          (dataItem) => dataItem.movie === e.target.innerText
-        );
+      if (filterObj.movie !== "all") {
+        filtered = data.filter((item) => item.movie === filterObj.movie);
       } else {
         filtered = data;
       }
-      document.querySelector("#movie-button span:nth-of-type(1)").textContent =
-        e.target.innerText;
+      filtered = filtered.sort(function (x, y) {
+        if (filterObj.sort === "last_name") {
+          let a = x.fullname.split(" ")[1].toUpperCase();
+          let b = y.fullname.split(" ")[1].toUpperCase();
+          return a == b ? 0 : a > b ? 1 : -1;
+        } else if (filterObj.sort === "first_name") {
+          let a = x.fullname.split(" ")[0].toUpperCase();
+          let b = y.fullname.split(" ")[0].toUpperCase();
+          return a == b ? 0 : a > b ? 1 : -1;
+        }
+      });
       renderActors(filtered);
     })
     .catch((err) => {

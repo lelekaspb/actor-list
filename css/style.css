@@ -139,8 +139,10 @@ media queries */
 /* filter */
 .filter {
   position: relative;
-  margin: 4rem 0 0 4rem;
-  width: 15rem;
+  margin: 4rem 4rem 0 4rem;
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .movie-button {
@@ -152,7 +154,7 @@ media queries */
   color: var(--primary-color);
   border: 1.5px solid var(--primary-color);
   border-radius: 5px;
-  width: 100%;
+  width: 15.1rem;
   cursor: pointer;
   outline: none;
   transition: all 0.3s;
@@ -180,7 +182,7 @@ media queries */
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  width: 12.8rem;
+  width: 13rem;
   gap: 1rem;
   border: 1.5px solid var(--primary-color);
   border-radius: 5px;
@@ -201,4 +203,16 @@ media queries */
 
 .hidden {
   display: none;
+}
+
+.actors-sort-wrapper {
+  font-size: 1.5rem;
+}
+
+select {
+  font-size: 1.5rem;
+  padding: 0.4rem;
+
+  border: 1.5px solid var(--primary-color);
+  border-radius: 5px;
 }

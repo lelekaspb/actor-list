@@ -13,15 +13,27 @@
     </header>
     <main>
       <section class="filter">
-        <button id="movie-button" class="movie-button">
-          <span>All movies</span><span>&#9660;</span>
-        </button>
-        <div id="movie-dropdown" class="movie-dropdown hidden">
-          <a href="#" data-movie="all">All movies</a>
-          <a href="#" data-movie="pulp_fiction">Pulp Fiction</a>
-          <a href="#" data-movie="fight_club">Fight Club</a>
-          <a href="#" data-movie="goodfellas">Goodfellas</a>
-          <a href="#" data-movie="inception">Inception</a>
+        <div class="movie-filter-wrapper">
+          <button id="movie-button" class="movie-button">
+            <span>All movies</span><span>&#9660;</span>
+          </button>
+          <div id="movie-dropdown" class="movie-dropdown hidden">
+            <a href="#" data-movie="all">All movies</a>
+            <a href="#" data-movie="pulp_fiction">Pulp Fiction</a>
+            <a href="#" data-movie="fight_club">Fight Club</a>
+            <a href="#" data-movie="goodfellas">Goodfellas</a>
+            <a href="#" data-movie="inception">Inception</a>
+          </div>
+        </div>
+        <div class="actors-sort-wrapper">
+          <label for="sort">Sort by: </label>
+          <select name="sort" id="sort" class="sort">
+            <!-- <option value="default" selected>Default</option> -->
+            <option value="first_name" class="sort_option" selected>
+              First name
+            </option>
+            <option value="last_name" class="sort_option">Last name</option>
+          </select>
         </div>
       </section>
       <div class="content_wrapper">
