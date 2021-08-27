@@ -9,7 +9,7 @@ const dropdownList = document.querySelectorAll("#movie-dropdown > a");
 let dataArray = [];
 let filtered = [];
 const filterObj = {
-  movie: "all",
+  movie: "All movies",
   sort: "first_name",
 };
 
@@ -96,7 +96,7 @@ function filterActors() {
   fetch("./json/actors.json", options)
     .then((res) => res.json())
     .then(function (data) {
-      if (filterObj.movie !== "all") {
+      if (filterObj.movie !== "All movies") {
         filtered = data.filter((item) => item.movie === filterObj.movie);
       } else {
         filtered = data;
